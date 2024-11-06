@@ -53,4 +53,9 @@ class OddballParticle extends Particle {
     myWidth = 60;
     myColor = color(128,128,128);
   }
+
+void move(){
+  myX += (int)(Math.random()*5)-2;
+  myY += (int)(Math.random()*5)-2;
+  }
 }

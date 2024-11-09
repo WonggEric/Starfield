@@ -1,11 +1,11 @@
 Particle[] star = new Particle[1000];
 void setup() {
   size(1000, 1000);
-  for (int i = 0; i<star.length-1; i++) {
+  for (int i = 0; i < star.length - 3; i++) {
     star[i] = new Particle();
   }
-  for (int i = star.length-1; i<star.length; i++) {
-    star[i] =  new OddballParticle();
+    for (int i = star.length - 3; i < star.length; i++) {
+    star[i] = new OddballParticle();
   }
 }
 
@@ -26,7 +26,7 @@ class Particle {
     myY = 500;
     myAngle =  Math.random() * (2 * Math.PI);
     mySpeed = (double)(Math.random()*3);
-    myColor = color(255);
+    myColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
     myHeight = 7;
     myWidth = 7;
   }
@@ -54,8 +54,10 @@ class OddballParticle extends Particle {
     myColor = color(128,128,128);
   }
 
-void move(){
-  myX += (int)(Math.random()*5)-2;
-  myY += (int)(Math.random()*5)-2;
+ void move() {
+    myX += Math.cos(myAngle) * 2;
+    myY += Math.sin(myAngle) * 2;
+    myX += (int)(Math.random() * 10) - 4;  // Jitter in the x direction (-2 to +2)
+    myY += (int)(Math.random() * 10) - 4;  // Jitter in the y direction (-2 to +2)
   }
 }
